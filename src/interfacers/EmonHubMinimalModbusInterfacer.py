@@ -6,30 +6,30 @@ import glob
 from emonhub_interfacer import EmonHubInterfacer
 
 """
-[[SDM120]]
+[[UF50]]
     Type = EmonHubMinimalModbusInterfacer
     [[[init_settings]]]
         device = /dev/ttyUSB0
-        baud = 2400
+        baud = 9600
     [[[runtimesettings]]]
         pubchannels = ToEmonCMS,
         read_interval = 10
-        nodename = sdm120
-        # prefix = sdm_
-        registers = 0,6,12,18,30,70,72,74,76
+        nodename = UF50
+        # prefix = uf50_
+        registers = 2,4,6,8,10,11,12,14,16
         names = V,I,P,VA,PF,FR,EI,EE,RI
         precision = 2,3,1,1,3,3,3,3,3
 """
 
-"""class EmonHubSDM120Interfacer
+"""class EmonHubUF50Interfacer
 
-SDM120 interfacer for use in development
+UF50 interfacer for use in development
 
 """
 
 class EmonHubMinimalModbusInterfacer(EmonHubInterfacer):
 
-    def __init__(self, name, device="/dev/modbus", baud=2400):
+    def __init__(self, name, device="/dev/modbus", baud=9600):
         """Initialize Interfacer
 
         """
@@ -42,9 +42,9 @@ class EmonHubMinimalModbusInterfacer(EmonHubInterfacer):
         # Interfacer specific settings
         self._modbus_settings = {
             'read_interval': 10.0,
-            'nodename':'sdm120',
+            'nodename':'uf50',
             'prefix':'',
-            'registers': [0,6,12,18,30,70,72,74,76],
+            'registers': [2,4,6,8,10,11,12,14,16],
             'names': ['V','I','P','VA','PF','FR','EI','EE','RI'],
             'precision': [2,3,1,1,3,3,3,3,3]
         }
